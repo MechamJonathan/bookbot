@@ -7,7 +7,7 @@ def main():
     character_count = get_character_count(text)
     #print(f"Word count: {word_count}")
     #print(f"Character count: {character_count}")
-    print_data(text, book_path)
+    print_data(text, book_path, word_count, character_count)
 
 def get_book_text(path):
     with open(path) as f:
@@ -30,16 +30,14 @@ def sort_data(dict):
     sorted_dict = OrderedDict(sorted(dict.items()))
     return sorted_dict
     
-def print_data(text, book_path):
-    char_count = get_character_count(text)
+def print_data(text, book_path, word_count, char_count):
     sorted_dict = sort_data(char_count)
 
-    print("--- Report Start ---")
-    print(f"Book: {book_path} " )
-    print(f"Total Word Count: {get_word_count(text)}\n")
+    print(f"--- Begin report of {book_path} ---")
+    print(f"{word_count} words found in the document")
 
     for char in sorted_dict:
         print(f"The '{char}' character was found {sorted_dict[char]} times")
-    print("\n--- Report End ---")
+    print("\n--- End report ---")
 
 main()
